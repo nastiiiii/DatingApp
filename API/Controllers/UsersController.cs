@@ -12,7 +12,6 @@ namespace API.Controllers;
 [Authorize]
 public class UsersController(IUserRepo userRepo, IMapper mapper, IPhotoService photoService) : BaseAPI
 {
-    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
     {

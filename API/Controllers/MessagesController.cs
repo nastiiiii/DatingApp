@@ -20,7 +20,8 @@ public class MessagesController(IMessageRepo messageRepo, IUserRepo userRepo, IM
         var sender = await userRepo.GetUserByUsername(username);
         var recipient = await userRepo.GetUserByUsername(createMessageDto.RecipientUsername);
 
-        if (recipient == null || sender == null) return BadRequest("Invalid recipient");
+        if (recipient == null || sender == null || sender.UserName == null || recipient.UserName == null)
+            return BadRequest("Invalid recipient");
 
         var message = new Message
         {
