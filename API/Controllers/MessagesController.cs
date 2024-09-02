@@ -17,8 +17,8 @@ public class MessagesController(IUnitOfWork unitOfWork, IMapper mapper) : BaseAP
     {
         var username = User.GetUsername();
         if (username == createMessageDto.RecipientUsername) return BadRequest("You cannot send message to yourself");
-        var sender = await unitOfWork.UserRepo.GetUserByUsername(username);
-        var recipient = await unitOfWork.UserRepo.GetUserByUsername(createMessageDto.RecipientUsername);
+        var sender = await unitOfWork.UserRepo.GetUserByUsernameAsync(username);
+        var recipient = await unitOfWork.UserRepo.GetUserByUsernameAsync(createMessageDto.RecipientUsername);
 
         if (recipient == null || sender == null || sender.UserName == null || recipient.UserName == null)
             return BadRequest("Invalid recipient");
