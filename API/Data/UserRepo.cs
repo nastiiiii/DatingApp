@@ -14,12 +14,7 @@ public class UserRepo(DataContext context, IMapper mapper) : IUserRepo
     {
         context.Entry(user).State = EntityState.Modified;
     }
-
-    public async Task<bool> SaveChangesAsync()
-    {
-        return await context.SaveChangesAsync() > 0;
-    }
-
+    
     public async Task<IEnumerable<AppUser>> GetUsersAsync()
     {
         return await context.Users.Include(x => x.Photos).ToListAsync();

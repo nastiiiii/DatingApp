@@ -59,9 +59,5 @@ public class LikesRepo(DataContext context, IMapper mapper) :ILikesRepo
     {
         context.Likes.Add(like);
     }
-
-    public async Task<bool> SaveChanges()
-    {
-        return await context.SaveChangesAsync() > 0;
-    }
+    
 }
