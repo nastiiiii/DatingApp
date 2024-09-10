@@ -61,5 +61,5 @@ jobs:
         with:
           app-name: 'dating-app'
           slot-name: 'Production'
-          package: './bin/Publish'
+          package: .
           
